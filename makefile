@@ -32,11 +32,14 @@ COMMON_CPPFLAGS = \
 	-Wno-switch \
 	-Wno-switch-enum \
 	-Werror \
+	-Wno-parentheses \
+	-Wno-deprecated \
+	-Wno-null-dereference \
 	-mpclmul \
 	-std=c++0x
 
 COMMON_LDFLAGS = \
-	-s
+#	-s
 
 #---------------- LIB -------------------
 	
@@ -61,6 +64,7 @@ LIB_INCLUDES = \
 	$(COMMON_INCLUDES) \
 	-I ${JAVA_HOME}/include \
 	-I ${JAVA_HOME}/include/linux \
+	-I ${JAVA_HOME}/include/darwin \
 	-I src/utils \
 	-I src/crypto_utils \
 	-I src/mpc_protocols
@@ -74,12 +78,12 @@ LIB_CPPFLAGS = \
 
 LIB_LDFLAGS = \
 	$(COMMON_LDFLAGS) \
-	-Wl,-z,defs \
 	-Wl,-rpath,\'\$$ORIGIN\' \
 	-shared \
 	-rdynamic \
 	-lcrypto \
 	-lpthread
+    # -Wl,-z,defs
 
 .s.o: 
 	$(CXX) -o $@ -c $<

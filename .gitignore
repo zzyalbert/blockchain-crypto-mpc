@@ -1,0 +1,6 @@
+.vscode
+*/**/*.o
+**/*.so
+*/**/*.gch
+mpc_crypto_test
+mpc_crypto_bench
